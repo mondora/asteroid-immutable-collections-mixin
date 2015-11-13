@@ -8,6 +8,9 @@ var webpack  = require("webpack");
 var build = function (minify, callback) {
     webpack({
         entry: "./src/asteroid-collections.js",
+        externals: {
+            "immutable": "umd immutable"
+        },
         module: {
             loaders: [{
                 test: /\.js$/,

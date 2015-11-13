@@ -12,12 +12,12 @@ export function init () {
 }
 
 export function getServiceConfig (providerName) {
-    const serviceConfiguration = this.collections.getIn([
-        SERVICE_CONFIG_COLLECTION,
-        providerName
-    ]);
-    if (!serviceConfiguration) {
+    try {
+        return this.collections
+            .get(SERVICE_CONFIG_COLLECTION)
+            .find(serviceConfig => serviceConfig.get("service") === providerName)
+            .toJS();
+    } catch (ignore) {
         throw new Error(`No configuration found for provider ${providerName}`);
     }
-    return serviceConfiguration.toJS();
 }

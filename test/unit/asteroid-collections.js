@@ -102,18 +102,33 @@ describe("`asteroid-collection` mixin", function () {
             asteroidCollections.__ResetDependency__("SERVICE_CONFIG_COLLECTION");
         });
 
-        it("should call the `getIn` function of collections with the correct parameter", function () {
+        it("should call the `get` function of collections with the correct parameter", function () {
             const instance = {
                 collections: {
-                    getIn: sinon.stub().returns(Immutable.Map())
+                    get: sinon.stub().returns(Immutable.Map({id: Immutable.Map({service: "providerName"})}))
                 }
             };
             asteroidCollections.getServiceConfig.call(instance, providerName);
-            expect(instance.collections.getIn).to.have.callCount(1);
-            expect(instance.collections.getIn).to.have.been.calledWith([
-                SERVICE_CONFIG_COLLECTION,
-                providerName
-            ]);
+            expect(instance.collections.get).to.have.callCount(1);
+            expect(instance.collections.get).to.have.been.calledWith(SERVICE_CONFIG_COLLECTION);
+        });
+
+        it("should return an object", function () {
+            const instance = {
+                collections: {
+                    get: sinon.stub().returns(Immutable.Map({
+                        id: Immutable.Map(
+                            {service: "providerName", clientID: "clientID"}
+                        )}
+                    ))
+                }
+            };
+            var ret = asteroidCollections.getServiceConfig.call(instance, providerName);
+            expect(ret).to.be.an.instanceOf(Object);
+            expect(ret).to.deep.equal({
+                service: "providerName",
+                clientID: "clientID"
+            });
         });
 
         it("should throw an `Error` with correct message if serviceConfiguration is `undefined`", function () {
@@ -123,19 +138,7 @@ describe("`asteroid-collection` mixin", function () {
             const troubleMaker = () => {
                 asteroidCollections.getServiceConfig.call(instance, providerName);
             };
-            // expect(ret).to.be.an.instanceOf(Error);
             expect(troubleMaker).to.throw("No configuration found for provider providerName");
-        });
-
-        it("should return an object", function () {
-            const instance = {
-                collections: {
-                    getIn: sinon.stub().returns(Immutable.Map())
-                }
-            };
-            var ret = asteroidCollections.getServiceConfig.call(instance, providerName);
-            expect(ret).to.be.an.instanceOf(Object);
-            expect(ret).to.deep.equal({});
         });
 
     });
