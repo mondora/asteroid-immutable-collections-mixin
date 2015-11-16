@@ -1,8 +1,8 @@
 {
-  "name": "asteroid-collections-mixin",
+  "name": "asteroid-immutable-collections-mixin",
   "version": "1.0.1",
   "description": "Use Immutable collection in asteroid",
-  "main": "dist/asteroid-collections-mixin.js",
+  "main": "dist/asteroid-immutable-collections-mixin.js",
   "scripts": {
     "prepublish": "gulp build",
     "build": "gulp build",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mondora/asteroid-collections-mixin.git"
+    "url": "https://github.com/mondora/asteroid-immutable-collections-mixin.git"
   },
   "keywords": [
     "ddp",
@@ -24,9 +24,9 @@
   "author": "Davide Bianchi <davide.bianchi@mondora.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mondora/asteroid-collections-mixin/issues"
+    "url": "https://github.com/mondora/asteroid-immutable-collections-mixin/issues"
   },
-  "homepage": "https://github.com/mondora/asteroid-collections-mixin",
+  "homepage": "https://github.com/mondora/asteroid-immutable-collections-mixin",
   "devDependencies": {
     "babel": "^5.8.29",
     "babel-core": "^5.8.29",

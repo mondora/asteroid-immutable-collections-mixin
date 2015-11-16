@@ -7,7 +7,7 @@ var webpack  = require("webpack");
 
 var build = function (minify, callback) {
     webpack({
-        entry: "./src/asteroid-collections.js",
+        entry: "./src/asteroid-immutable-collections.js",
         externals: {
             "immutable": "umd immutable"
         },
@@ -20,9 +20,9 @@ var build = function (minify, callback) {
         },
         output: {
             libraryTarget: "umd",
-            library: "AsteroidOauthMixin",
+            library: "asteroidImmutableMixin",
             path: path.join(__dirname, "/dist"),
-            filename: (minify ? "asteroid-collections-mixin.min.js" : "asteroid-collections-mixin.js")
+            filename: (minify ? "asteroid-immutable-collections-mixin.min.js" : "asteroid-immutable-collections-mixin.js")
         },
         plugins: minify ? [
             new webpack.optimize.UglifyJsPlugin({

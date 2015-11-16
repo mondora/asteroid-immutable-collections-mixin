@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/mondora/asteroid-collections-mixin.svg?branch=master)](https://travis-ci.org/mondora/aasteroid-collections-mixin)
-[![Coverage Status](https://coveralls.io/repos/mondora/asteroid-collections-mixin/badge.svg?branch=master&service=github)](https://coveralls.io/github/mondora/asteroid-collections-mixin?branch=master)
+[![Build Status](https://travis-ci.org/mondora/asteroid-immutable-collections-mixin.svg?branch=master)](https://travis-ci.org/mondora/asteroid-immutable-collections-mixin)
+[![Coverage Status](https://coveralls.io/repos/mondora/asteroid-immutable-collections-mixin/badge.svg?branch=master&service=github)](https://coveralls.io/github/mondora/asteroid-immutable-collections-mixin?branch=master)
 
-# asteroid-collections-mixin
+# asteroid-immutable-collections-mixin
 
 A mixin to implement Immutable collections for Asteroid.
 
@@ -11,15 +11,15 @@ A mixin to implement Immutable collections for Asteroid.
 
 Download the package:
 
-    npm install asteroid-collections-mixin
+    npm install asteroid-immutable-collections-mixin
 
 ## Example usage
 
 ```js
 import {createClass} from "asteroid";
-import * as asteroidCollectionsMixin from "asteroid-collections-mixin";
+import * as asteroidImmutableMixin from "asteroid-collections-mixin";
 
-const Asteroid = createClass([asteroidCollectionsMixin]);
+const Asteroid = createClass([asteroidImmutableMixin]);
 
 const asteroid = new Asteroid({platform, endpoint});
 

@@ -6,9 +6,9 @@ import {EventEmitter} from "events";
 
 chai.use(sinonChai);
 
-import * as asteroidCollections from "asteroid-collections";
+import * as asteroidCollections from "asteroid-immutable-collections";
 
-describe("`asteroid-collection` mixin", function () {
+describe("`asteroid-immutable-collections` mixin", function () {
 
     describe("`init` method", function () {
 
