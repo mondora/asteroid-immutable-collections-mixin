@@ -3,24 +3,53 @@
 
 # asteroid-immutable-collections-mixin
 
-A mixin to implement Immutable collections for Asteroid.
+A mixin to stores collections published by the server into an [immutable](http://facebook.github.io/immutable-js) map.
 
 ## Install
 
-### In node
 
-Download the package:
+    npm install --save asteroid-immutable-collections-mixin
 
-    npm install asteroid-immutable-collections-mixin
+## Development environment setup
 
-## Example usage
+After cloning the repository, install `npm` dependencies with `npm install`.
+Run `npm test` to run unit tests, or `npm run dev` to have `mocha` re-run your
+tests when source or test files change.
+
+## Usage
 
 ```js
 import {createClass} from "asteroid";
-import * as asteroidImmutableMixin from "asteroid-collections-mixin";
+import immutableCollectionMixin from "asteroid-immutable-collections-mixin";
 
 const Asteroid = createClass([asteroidImmutableMixin]);
 
-const asteroid = new Asteroid({platform, endpoint});
+const asteroid = new Asteroid({
+    endpoint: "ws://localhost:3000/websocket"
+});
+
+// Somewhere in your code:
+import {Map} from "immutable";
+
+// Use real-time collections
+asteroid.subscribe("collection-name");
+
+// Collection is an immutable map
+const collection = asteroid.collections.get("collection-name") || Map();
 
 ```
+
+## API
+
+### getServiceConfig(providerName)
+
+This method is to use this mixin with the
+[asteroid-oauth-mixin](https://github.com/mondora/asteroid-oauth-mixin).
+
+##### Arguments
+
+- `providerName` **string** _required_: the provider name with whom you want to login with Oauth.
+
+##### Returns
+
+An object that contains the `clientId`, the `consumerKey` or the `appId` that is used by the `asteroid-oauth-mixin`.

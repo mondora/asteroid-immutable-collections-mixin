@@ -5,20 +5,9 @@ import sinonChai from "sinon-chai";
 
 chai.use(sinonChai);
 
-import * as handlers from "handlers";
+import {added, changed, removed} from "handlers";
 
 describe("`handlers` function", function () {
-
-    const normalizeId = sinon.spy(i => i);
-
-    beforeEach(function () {
-        normalizeId.reset();
-        handlers.__Rewire__("normalizeId", normalizeId);
-    });
-
-    afterEach(function () {
-        handlers.__ResetDependency__("normalizeId");
-    });
 
     describe("`added` function", function () {
 
@@ -35,7 +24,7 @@ describe("`handlers` function", function () {
                     test: "test"
                 }
             };
-            handlers.added.call(instance, options);
+            added.call(instance, options);
             expect(instance.collections.get("collection-name")).to.be.an.instanceOf(Immutable.Map);
             expect(instance.collections.get("collection-name").toJS()).to.deep.equal({
                 id: {
@@ -56,7 +45,7 @@ describe("`handlers` function", function () {
                 id: "id",
                 fields: {}
             };
-            handlers.added.call(instance, options);
+            added.call(instance, options);
             expect(instance.emit).to.have.callCount(1);
             expect(instance.emit).to.have.been.calledWith("collections:change", "added", "collection-name", "id");
         });
@@ -84,8 +73,8 @@ describe("`handlers` function", function () {
                     change: "changed"
                 }
             };
-            handlers.added.call(instance, addedCollectionOptions);
-            handlers.changed.call(instance, changedCollectionOptions);
+            added.call(instance, addedCollectionOptions);
+            changed.call(instance, changedCollectionOptions);
             expect(instance.collections.get("collection-name").toJS()).to.deep.equal({
                 id1: {
                     _id: "id1",
@@ -112,8 +101,8 @@ describe("`handlers` function", function () {
                 id: "id1",
                 cleared: ["test"]
             };
-            handlers.added.call(instance, addedCollectionOptions);
-            handlers.changed.call(instance, changedCollectionOptions);
+            added.call(instance, addedCollectionOptions);
+            changed.call(instance, changedCollectionOptions);
             expect(instance.collections.get("collection-name").toJS()).to.deep.equal({
                 id1: {
                     _id: "id1"
@@ -140,8 +129,8 @@ describe("`handlers` function", function () {
                 id: "id1",
                 cleared: ["test1", "test3"]
             };
-            handlers.added.call(instance, addedCollectionOptions);
-            handlers.changed.call(instance, changedCollectionOptions);
+            added.call(instance, addedCollectionOptions);
+            changed.call(instance, changedCollectionOptions);
             expect(instance.collections.get("collection-name").toJS()).to.deep.equal({
                 id1: {
                     _id: "id1",
@@ -159,7 +148,7 @@ describe("`handlers` function", function () {
                 collection: "collection-name",
                 id: "id"
             };
-            handlers.changed.call(instance, options);
+            changed.call(instance, options);
             expect(instance.emit).to.have.callCount(1);
             expect(instance.emit).to.have.been.calledWith("collections:change", "changed", "collection-name", "id");
         });
@@ -191,9 +180,9 @@ describe("`handlers` function", function () {
                 collection: "collection-name1",
                 id: "id1"
             };
-            handlers.added.call(instance, optionsAddDocument1);
-            handlers.added.call(instance, optionsAddDocument2);
-            handlers.removed.call(instance, optionsRemoveCollection);
+            added.call(instance, optionsAddDocument1);
+            added.call(instance, optionsAddDocument2);
+            removed.call(instance, optionsRemoveCollection);
             expect(instance.collections.get("collection-name1").toJS()).to.deep.equal({
                 id2: {
                     _id: "id2",
@@ -212,7 +201,7 @@ describe("`handlers` function", function () {
                 collection: "collection-name",
                 id: "id"
             };
-            handlers.removed.call(instance, options);
+            removed.call(instance, options);
             expect(instance.emit).to.have.callCount(1);
             expect(instance.emit).to.have.been.calledWith("collections:change", "removed", "collection-name", "id");
         });
