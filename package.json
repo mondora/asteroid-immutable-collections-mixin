@@ -2,9 +2,9 @@
   "name": "asteroid-immutable-collections-mixin",
   "version": "2.2.0",
   "description": "Use Immutable collection in asteroid",
-  "main": "dist/asteroid-immutable-collections-mixin.js",
+  "main": "lib/asteroid-immutable-collections.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir lib",
     "clean": "rimraf lib coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "coverage": "env NODE_ENV=test env NODE_PATH=src babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive test/unit",
