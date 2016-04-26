@@ -1,6 +1,6 @@
 {
   "name": "asteroid-immutable-collections-mixin",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Use Immutable collection in asteroid",
   "main": "lib/asteroid-immutable-collections.js",
   "scripts": {
