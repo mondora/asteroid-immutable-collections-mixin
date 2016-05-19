@@ -1,5 +1,8 @@
+[![npm version](https://badge.fury.io/js/asteroid-immutable-collections-mixin.svg)](https://badge.fury.io/js/asteroid-immutable-collections-mixin)
 [![Build Status](https://travis-ci.org/mondora/asteroid-immutable-collections-mixin.svg?branch=master)](https://travis-ci.org/mondora/asteroid-immutable-collections-mixin)
 [![Coverage Status](https://coveralls.io/repos/mondora/asteroid-immutable-collections-mixin/badge.svg?branch=master&service=github)](https://coveralls.io/github/mondora/asteroid-immutable-collections-mixin?branch=master)
+[![Dependency Status](https://david-dm.org/mondora/asteroid-immutable-collections-mixin.svg)](https://david-dm.org/mondora/asteroid-immutable-collections-mixin)
+[![devDependency Status](https://david-dm.org/mondora/asteroid-immutable-collections-mixin/dev-status.svg)](https://david-dm.org/mondora/asteroid-immutable-collections-mixin#info=devDependencies)
 
 # asteroid-immutable-collections-mixin
 
