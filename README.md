@@ -25,7 +25,7 @@ tests when source or test files change.
 import {createClass} from "asteroid";
 import immutableCollectionMixin from "asteroid-immutable-collections-mixin";
 
-const Asteroid = createClass([asteroidImmutableMixin]);
+const Asteroid = createClass([immutableCollectionMixin]);
 
 const asteroid = new Asteroid({
     endpoint: "ws://localhost:3000/websocket"

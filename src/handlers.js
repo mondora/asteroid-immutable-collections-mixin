@@ -1,11 +1,11 @@
-import Immutable from "immutable";
+import {fromJS} from "immutable";
 
 import normalizeId from "./lib/normalize-id";
 
 export function added ({collection, id, fields}) {
     const _id = normalizeId(id);
     // TODO `fields` might be empty. Find out if true and document why
-    const element = Immutable.fromJS({...fields, _id});
+    const element = fromJS({...fields, _id});
     this.collections = this.collections.setIn([collection, _id], element);
     this.emit("collections:change", "added", collection, _id);
 }
