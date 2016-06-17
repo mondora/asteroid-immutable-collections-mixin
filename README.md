@@ -11,7 +11,7 @@ A mixin to stores collections published by the server into an [immutable](http:/
 ## Install
 
 
-    npm install --save asteroid-immutable-collections-mixin
+    npm install --save asteroid-immutable-collections-mixin immutable
 
 ## Development environment setup
 
